@@ -1,5 +1,8 @@
 package dev.krypta.ProjectDataStructure.util;
 
+import lombok.experimental.UtilityClass;
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
 public class Formula {

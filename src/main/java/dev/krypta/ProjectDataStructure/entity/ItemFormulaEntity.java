@@ -30,6 +30,6 @@ public class ItemFormulaEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "formula_id", nullable = false)
-    private Formula formula;
+    private FormulaEntity formula;
 
 }

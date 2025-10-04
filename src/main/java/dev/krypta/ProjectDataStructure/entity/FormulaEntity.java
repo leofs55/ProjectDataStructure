@@ -29,6 +29,6 @@ public class FormulaEntity {
             orphanRemoval = true,
             fetch = FetchType.LAZY
     )
-    private List<ItemFormula> itens = new ArrayList<>();
+    private List<ItemFormulaEntity> itens = new ArrayList<>();
 
 }

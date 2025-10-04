@@ -1,5 +1,7 @@
 package dev.krypta.ProjectDataStructure.util;
 
+import org.springframework.stereotype.Component;
+
 import java.math.BigDecimal;
 
 public class ItemFormula {
