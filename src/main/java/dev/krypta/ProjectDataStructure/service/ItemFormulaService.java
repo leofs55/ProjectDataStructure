@@ -17,6 +17,9 @@ public class ItemFormulaService {
     public ItemFormula CreateFormulaItem(ItemFormula formula) {
         return new ItemFormula();
     }
+    public ItemFormula CreateFormulaItem(List<ItemFormula> formula) {
+        return new ItemFormula();
+    }
 
     public ItemFormula ReadFormulaItem(Long id) {
         return new ItemFormula();

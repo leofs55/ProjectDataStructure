@@ -26,7 +26,7 @@ public class ItemFormulaEntity {
     private Double quantidade;
 
     @Column(nullable = false, precision = 10, scale = 2) // Define a precisão para valores monetários
-    private BigDecimal valor;
+    private Double valor;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "formula_id", nullable = false)

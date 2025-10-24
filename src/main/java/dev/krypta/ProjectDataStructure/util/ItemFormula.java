@@ -9,9 +9,9 @@ public class ItemFormula {
     private String nomeItem;
     private String nomeFormula;
     private Integer quantidade;
-    private BigDecimal valor;
+    private Double valor;
 
-    public ItemFormula(String nomeItem, String nomeFormula, Integer quantidade, BigDecimal valor) {
+    public ItemFormula(String nomeItem, String nomeFormula, Integer quantidade, Double valor) {
         this.nomeItem = nomeItem;
         this.nomeFormula = nomeFormula;
         this.quantidade = quantidade;
@@ -45,11 +45,11 @@ public class ItemFormula {
         this.quantidade = quantidade;
     }
 
-    public BigDecimal getValor() {
+    public Double getValor() {
         return valor;
     }
 
-    public void setValor(BigDecimal valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
     }
 }
