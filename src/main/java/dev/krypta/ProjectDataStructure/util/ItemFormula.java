@@ -1,9 +1,12 @@
 package dev.krypta.ProjectDataStructure.util;
 
+import lombok.Builder;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
+@Component
+@Builder
 public class ItemFormula {
 
     private String nomeItem;

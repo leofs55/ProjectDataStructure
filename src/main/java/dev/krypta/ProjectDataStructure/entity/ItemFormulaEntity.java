@@ -1,18 +1,17 @@
 package dev.krypta.ProjectDataStructure.entity;
 
-import dev.krypta.ProjectDataStructure.util.Formula;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.math.BigDecimal;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "itens_formula")
+@Builder
 public class ItemFormulaEntity {
 
     @Id
@@ -23,13 +22,12 @@ public class ItemFormulaEntity {
     private String nome;
 
     @Column(nullable = false)
-    private Double quantidade;
+    private String nomeFormula;
+
+    @Column(nullable = false)
+    private Integer quantidade;
 
     @Column(nullable = false, precision = 10, scale = 2) // Define a precisão para valores monetários
     private Double valor;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "formula_id", nullable = false)
-    private FormulaEntity formula;
 
 }
