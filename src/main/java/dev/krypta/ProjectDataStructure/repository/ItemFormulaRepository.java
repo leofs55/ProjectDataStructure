@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface ItemFormulaRepository extends JpaRepository<ItemFormulaEntity, Long> {
 
-    List<ItemFormulaEntity> findByNomeFormula(String nomeFormula);
+    List<ItemFormulaEntity> findByIdFormula(String idFormula);
 
     Optional<ItemFormulaEntity> findByNome(String nomeItem);
 

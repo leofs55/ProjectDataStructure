@@ -21,6 +21,7 @@ public class TreeNode {
             this.itemFormulaList = new ArrayList<>();
         }
 
+
         // Getters necessários para as funções auxiliares
         public ItemFormula getItemFormula() {
             return itemFormula;
@@ -33,6 +34,9 @@ public class TreeNode {
 
     public TreeNode(Node raiz) {
         this.raiz = raiz;
+    }
+
+    public TreeNode() {
     }
 
     public static Node findNode(Node currentNode, String itemName) {

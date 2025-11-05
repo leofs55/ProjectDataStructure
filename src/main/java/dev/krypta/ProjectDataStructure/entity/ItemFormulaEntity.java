@@ -19,15 +19,18 @@ public class ItemFormulaEntity {
     private Long id;
 
     @Column(nullable = false)
-    private String nome;
+    private String idFormula;
 
     @Column(nullable = false)
+    private String nome;
+
+    @Column(name = "nome_formula")
     private String nomeFormula;
 
     @Column(nullable = false)
     private Integer quantidade;
 
-    @Column(nullable = false, precision = 10, scale = 2) // Define a precisão para valores monetários
+    @Column(nullable = false)
     private Double valor;
 
 }

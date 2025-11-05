@@ -1,0 +1,252 @@
+{
+  "info": {
+    "_postman_id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+    "name": "ProjectDataStructure API (v2 - com idFormula)",
+    "description": "Coleção para testar a API de Itens de Fórmula (com 5 campos)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create ItemFormula",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"nomeItem\": \"Tinta Azul 0.7mm\",\n    \"idFormula\": \"CAN-CLASSIC-001\",\n    \"nomeFormula\": \"Caneta Azul Classic\",\n    \"quantidade\": 1,\n    \"valor\": 0.25\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/front/item-formula/create",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "front",
+            "item-formula",
+            "create"
+          ]
+        },
+        "description": "Cria um novo item de fórmula."
+      },
+      "response": []
+    },
+    {
+      "name": "Create List - Exemplo Simples",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "[\n    {\n        \"nomeItem\": \"Tinta Vermelha 0.7mm\",\n        \"idFormula\": \"CAN-VERM-001\",\n        \"nomeFormula\": \"Caneta Vermelha Classic\",\n        \"quantidade\": 1,\n        \"valor\": 0.25\n    },\n    {\n        \"nomeItem\": \"Tubo Plástico Transparente\",\n        \"idFormula\": \"CAN-VERM-001\",\n        \"nomeFormula\": \"Caneta Vermelha Classic\",\n        \"quantidade\": 1,\n        \"valor\": 0.15\n    },\n    {\n        \"nomeItem\": \"Tampa Vermelha\",\n        \"idFormula\": \"CAN-VERM-001\",\n        \"nomeFormula\": \"Caneta Vermelha Classic\",\n        \"quantidade\": 1,\n        \"valor\": 0.05\n    }\n]",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/front/item-formula/create-list",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "front",
+            "item-formula",
+            "create-list"
+          ]
+        },
+        "description": "Cria múltiplos itens de fórmula (em lote)."
+      },
+      "response": []
+    },
+    {
+      "name": "Create List - Computador (Árvore)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "[\n    {\n        \"nomeItem\": \"Computador\",\n        \"idFormula\": \"COMP-001\",\n        \"nomeFormula\": null,\n        \"quantidade\": 1,\n        \"valor\": 0.0\n    },\n    {\n        \"nomeItem\": \"Gabinete\",\n        \"idFormula\": \"COMP-001\",\n        \"nomeFormula\": \"Computador\",\n        \"quantidade\": 1,\n        \"valor\": 900.0\n    },\n    {\n        \"nomeItem\": \"Placa-Mãe\",\n        \"idFormula\": \"COMP-001\",\n        \"nomeFormula\": \"Gabinete\",\n        \"quantidade\": 1,\n        \"valor\": 500.0\n    },\n    {\n        \"nomeItem\": \"CPU\",\n        \"idFormula\": \"COMP-001\",\n        \"nomeFormula\": \"Placa-Mãe\",\n        \"quantidade\": 1,\n        \"valor\": 1000.0\n    },\n    {\n        \"nomeItem\": \"Memória RAM\",\n        \"idFormula\": \"COMP-001\",\n        \"nomeFormula\": \"Placa-Mãe\",\n        \"quantidade\": 2,\n        \"valor\": 200.0\n    },\n    {\n        \"nomeItem\": \"Chipset\",\n        \"idFormula\": \"COMP-001\",\n        \"nomeFormula\": \"Placa-Mãe\",\n        \"quantidade\": 1,\n        \"valor\": 150.0\n    },\n    {\n        \"nomeItem\": \"Fonte de Alimentação\",\n        \"idFormula\": \"COMP-001\",\n        \"nomeFormula\": \"Gabinete\",\n        \"quantidade\": 1,\n        \"valor\": 300.0\n    },\n    {\n        \"nomeItem\": \"Armazenamento\",\n        \"idFormula\": \"COMP-001\",\n        \"nomeFormula\": \"Gabinete\",\n        \"quantidade\": 1,\n        \"valor\": 0.0\n    },\n    {\n        \"nomeItem\": \"HDD\",\n        \"idFormula\": \"COMP-001\",\n        \"nomeFormula\": \"Armazenamento\",\n        \"quantidade\": 1,\n        \"valor\": 250.0\n    },\n    {\n        \"nomeItem\": \"SSD\",\n        \"idFormula\": \"COMP-001\",\n        \"nomeFormula\": \"Armazenamento\",\n        \"quantidade\": 1,\n        \"valor\": 400.0\n    },\n    {\n        \"nomeItem\": \"Monitor\",\n        \"idFormula\": \"COMP-001\",\n        \"nomeFormula\": \"Computador\",\n        \"quantidade\": 1,\n        \"valor\": 900.0\n    },\n    {\n        \"nomeItem\": \"Tela LCD\",\n        \"idFormula\": \"COMP-001\",\n        \"nomeFormula\": \"Monitor\",\n        \"quantidade\": 1,\n        \"valor\": 600.0\n    },\n    {\n        \"nomeItem\": \"Carcaça\",\n        \"idFormula\": \"COMP-001\",\n        \"nomeFormula\": \"Monitor\",\n        \"quantidade\": 1,\n        \"valor\": 100.0\n    },\n    {\n        \"nomeItem\": \"Periféricos\",\n        \"idFormula\": \"COMP-001\",\n        \"nomeFormula\": \"Computador\",\n        \"quantidade\": 1,\n        \"valor\": 0.0\n    },\n    {\n        \"nomeItem\": \"Teclado\",\n        \"idFormula\": \"COMP-001\",\n        \"nomeFormula\": \"Periféricos\",\n        \"quantidade\": 1,\n        \"valor\": 100.0\n    },\n    {\n        \"nomeItem\": \"Mouse\",\n        \"idFormula\": \"COMP-001\",\n        \"nomeFormula\": \"Periféricos\",\n        \"quantidade\": 1,\n        \"valor\": 80.0\n    }\n]",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/front/item-formula/create-list",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "front",
+            "item-formula",
+            "create-list"
+          ]
+        },
+        "description": "Cria a fórmula completa do Computador (estrutura de árvore)."
+      },
+      "response": []
+    },
+    {
+      "name": "Create List - Caneta (Árvore)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "[\n    {\n        \"nomeItem\": \"Caneta\",\n        \"idFormula\": \"CANETA-001\",\n        \"nomeFormula\": null,\n        \"quantidade\": 1,\n        \"valor\": 0.0\n    },\n    {\n        \"nomeItem\": \"Tinta\",\n        \"idFormula\": \"CANETA-001\",\n        \"nomeFormula\": \"Caneta\",\n        \"quantidade\": 1,\n        \"valor\": 0.8\n    },\n    {\n        \"nomeItem\": \"Pigmento\",\n        \"idFormula\": \"CANETA-001\",\n        \"nomeFormula\": \"Tinta\",\n        \"quantidade\": 1,\n        \"valor\": 0.3\n    },\n    {\n        \"nomeItem\": \"Solvente\",\n        \"idFormula\": \"CANETA-001\",\n        \"nomeFormula\": \"Tinta\",\n        \"quantidade\": 1,\n        \"valor\": 0.5\n    },\n    {\n        \"nomeItem\": \"Corpo\",\n        \"idFormula\": \"CANETA-001\",\n        \"nomeFormula\": \"Caneta\",\n        \"quantidade\": 1,\n        \"valor\": 1.0\n    },\n    {\n        \"nomeItem\": \"Plástico\",\n        \"idFormula\": \"CANETA-001\",\n        \"nomeFormula\": \"Corpo\",\n        \"quantidade\": 1,\n        \"valor\": 0.7\n    },\n    {\n        \"nomeItem\": \"Clip\",\n        \"idFormula\": \"CANETA-001\",\n        \"nomeFormula\": \"Corpo\",\n        \"quantidade\": 1,\n        \"valor\": 0.3\n    },\n    {\n        \"nomeItem\": \"Tampa\",\n        \"idFormula\": \"CANETA-001\",\n        \"nomeFormula\": \"Caneta\",\n        \"quantidade\": 1,\n        \"valor\": 0.7\n    },\n    {\n        \"nomeItem\": \"Plástico\",\n        \"idFormula\": \"CANETA-001\",\n        \"nomeFormula\": \"Tampa\",\n        \"quantidade\": 1,\n        \"valor\": 0.5\n    },\n    {\n        \"nomeItem\": \"Vedação\",\n        \"idFormula\": \"CANETA-001\",\n        \"nomeFormula\": \"Tampa\",\n        \"quantidade\": 1,\n        \"valor\": 0.2\n    }\n]",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/front/item-formula/create-list",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "front",
+            "item-formula",
+            "create-list"
+          ]
+        },
+        "description": "Cria a fórmula completa da Caneta (estrutura de árvore)."
+      },
+      "response": []
+    },
+    {
+      "name": "Read ItemFormula",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/front/item-formula/read/:nameItemFormula",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "front",
+            "item-formula",
+            "read",
+            ":nameItemFormula"
+          ],
+          "variable": [
+            {
+              "key": "nameItemFormula",
+              "value": "Tinta Azul 0.7mm",
+              "description": "O nome do *item* (nomeItem) a ser buscado"
+            }
+          ]
+        },
+        "description": "Busca um item de fórmula pelo nome."
+      },
+      "response": []
+    },
+    {
+      "name": "Update ItemFormula",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"nomeItem\": \"Tinta Azul 1.0mm\",\n    \"idFormula\": \"CAN-CLASSIC-001\",\n    \"nomeFormula\": \"Caneta Azul Classic\",\n    \"quantidade\": 1,\n    \"valor\": 0.30\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/front/item-formula/update/:nameItemFormula",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "front",
+            "item-formula",
+            "update",
+            ":nameItemFormula"
+          ],
+          "variable": [
+            {
+              "key": "nameItemFormula",
+              "value": "Tinta Azul 0.7mm",
+              "description": "O nome do *item* (nomeItem) a ser atualizado"
+            }
+          ]
+        },
+        "description": "Atualiza um item de fórmula existente."
+      },
+      "response": []
+    },
+    {
+      "name": "Delete ItemFormula",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/front/item-formula/delete/:nameItemFormula",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "front",
+            "item-formula",
+            "delete",
+            ":nameItemFormula"
+          ],
+          "variable": [
+            {
+              "key": "nameItemFormula",
+              "value": "Tinta Azul 1.0mm",
+              "description": "O nome do *item* (nomeItem) a ser deletado"
+            }
+          ]
+        },
+        "description": "Deleta um item de fórmula pelo nome."
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string",
+      "description": "URL base da sua aplicação Spring Boot"
+    }
+  ]
+}
