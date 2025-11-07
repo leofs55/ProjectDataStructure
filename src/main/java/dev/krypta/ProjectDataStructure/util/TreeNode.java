@@ -2,7 +2,6 @@ package dev.krypta.ProjectDataStructure.util;
 
 import org.springframework.stereotype.Component;
 
-import java.rmi.UnexpectedException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -38,6 +37,11 @@ public class TreeNode {
 
     public TreeNode() {
     }
+
+    public Node getRaiz() {
+        return raiz;
+    }
+
 
     public static Node findNode(Node currentNode, String itemName) {
         if (currentNode == null) {
@@ -154,6 +158,82 @@ public class TreeNode {
         return custoProprioUnitario + custoFilhosTotal;
     }
 
+    public static boolean deleteNode(TreeNode tree, String itemName) {
+        if (tree == null || tree.raiz == null) {
+            return false;
+        }
+
+        // Se for a raiz, torna a árvore vazia
+        if (tree.raiz.getItemFormula().getNomeItem().equals(itemName)) {
+            tree.raiz = null;
+            return true;
+        }
+
+        // Busca o nó e remove da lista de filhos do pai
+        return deleteNodeRecursive(tree.raiz, itemName);
+    }
+
+    private static boolean deleteNodeRecursive(Node currentNode, String itemName) {
+        if (currentNode == null || currentNode.getItemFormulaList() == null) {
+            return false;
+        }
+
+        // Verifica se algum filho é o nó a ser deletado
+        for (int i = 0; i < currentNode.getItemFormulaList().size(); i++) {
+            Node child = currentNode.getItemFormulaList().get(i);
+            if (child.getItemFormula().getNomeItem().equals(itemName)) {
+                // Remove o nó da lista de filhos
+                currentNode.getItemFormulaList().remove(i);
+                return true;
+            }
+            
+            // Busca recursivamente nos filhos
+            if (deleteNodeRecursive(child, itemName)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static boolean updateNode(TreeNode tree, String itemName, ItemFormula itemFormula) {
+        if (tree == null || tree.raiz == null) {
+            return false;
+        }
+
+        // Busca o nó a ser atualizado
+        Node nodeToUpdate = findNode(tree.raiz, itemName);
+        
+        if (nodeToUpdate == null) {
+            return false;
+        }
+
+        // Atualiza os dados do nó
+        // Preserva o nome do item (não altera o nomeItem usado como identificador)
+        // Mas atualiza os outros campos se fornecidos
+        ItemFormula currentItem = nodeToUpdate.getItemFormula();
+
+        if (itemFormula.getQuantidade() != null) {
+            currentItem.setQuantidade(itemFormula.getQuantidade());
+        }
+        
+        // Atualiza valor se fornecido
+        if (itemFormula.getValor() != null) {
+            currentItem.setValor(itemFormula.getValor());
+        }
+        
+        // Atualiza nomeFormula se fornecido (para manter a relação de hierarquia)
+        if (itemFormula.getNomeFormula() != null) {
+            currentItem.setNomeFormula(itemFormula.getNomeFormula());
+        }
+        
+        // Atualiza idFormula se fornecido
+        if (itemFormula.getIdFormula() != null) {
+            currentItem.setIdFormula(itemFormula.getIdFormula());
+        }
+
+        return true;
+    }
 
     public static void main(String[] args) {
         List<ItemFormula> itensPC = Arrays.asList(

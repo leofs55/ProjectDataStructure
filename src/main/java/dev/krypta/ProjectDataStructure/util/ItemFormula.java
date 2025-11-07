@@ -1,10 +1,7 @@
 package dev.krypta.ProjectDataStructure.util;
 
-import jakarta.persistence.Column;
 import lombok.Builder;
 import org.springframework.stereotype.Component;
-
-import java.math.BigDecimal;
 
 @Component
 @Builder

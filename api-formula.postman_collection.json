@@ -1,8 +1,8 @@
 {
   "info": {
     "_postman_id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
-    "name": "ProjectDataStructure API (v2 - com idFormula)",
-    "description": "Coleção para testar a API de Itens de Fórmula (com 5 campos)",
+    "name": "ProjectDataStructure API (v3 - com respostas padronizadas)",
+    "description": "Coleção para testar a API de Itens de Fórmula com respostas padronizadas em Map<String, Object>",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
@@ -26,17 +26,18 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/front/item-formula/create",
+          "raw": "{{baseUrl}}/api/v1/item-formula/create",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
-            "front",
+            "api",
+            "v1",
             "item-formula",
             "create"
           ]
         },
-        "description": "Cria um novo item de fórmula."
+        "description": "Cria um novo item de fórmula.\n\n**Resposta:**\n```json\n{\n    \"resultado\": \"Item de fórmula criado com sucesso\",\n    \"itemFormula\": {\n        \"nomeItem\": \"Tinta Azul 0.7mm\",\n        \"idFormula\": \"CAN-CLASSIC-001\",\n        \"nomeFormula\": \"Caneta Azul Classic\",\n        \"quantidade\": 1,\n        \"valor\": 0.25\n    }\n}\n```"
       },
       "response": []
     },
@@ -60,17 +61,18 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/front/item-formula/create-list",
+          "raw": "{{baseUrl}}/api/v1/item-formula/create-list",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
-            "front",
+            "api",
+            "v1",
             "item-formula",
             "create-list"
           ]
         },
-        "description": "Cria múltiplos itens de fórmula (em lote)."
+        "description": "Cria múltiplos itens de fórmula (em lote).\n\n**Resposta:**\n```json\n{\n    \"resultado\": \"Lista de itens de fórmula criada com sucesso\",\n    \"itemFormulaList\": [\n        {\n            \"nomeItem\": \"Tinta Vermelha 0.7mm\",\n            \"idFormula\": \"CAN-VERM-001\",\n            \"nomeFormula\": \"Caneta Vermelha Classic\",\n            \"quantidade\": 1,\n            \"valor\": 0.25\n        }\n    ]\n}\n```"
       },
       "response": []
     },
@@ -94,17 +96,18 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/front/item-formula/create-list",
+          "raw": "{{baseUrl}}/api/v1/item-formula/create-list",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
-            "front",
+            "api",
+            "v1",
             "item-formula",
             "create-list"
           ]
         },
-        "description": "Cria a fórmula completa do Computador (estrutura de árvore)."
+        "description": "Cria a fórmula completa do Computador (estrutura de árvore).\n\n**Resposta:**\n```json\n{\n    \"resultado\": \"Lista de itens de fórmula criada com sucesso\",\n    \"itemFormulaList\": [\n        {\n            \"nomeItem\": \"Computador\",\n            \"idFormula\": \"COMP-001\",\n            \"nomeFormula\": null,\n            \"quantidade\": 1,\n            \"valor\": 0.0\n        }\n    ]\n}\n```"
       },
       "response": []
     },
@@ -128,17 +131,18 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/front/item-formula/create-list",
+          "raw": "{{baseUrl}}/api/v1/item-formula/create-list",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
-            "front",
+            "api",
+            "v1",
             "item-formula",
             "create-list"
           ]
         },
-        "description": "Cria a fórmula completa da Caneta (estrutura de árvore)."
+        "description": "Cria a fórmula completa da Caneta (estrutura de árvore).\n\n**Resposta:**\n```json\n{\n    \"resultado\": \"Lista de itens de fórmula criada com sucesso\",\n    \"itemFormulaList\": [\n        {\n            \"nomeItem\": \"Caneta\",\n            \"idFormula\": \"CANETA-001\",\n            \"nomeFormula\": null,\n            \"quantidade\": 1,\n            \"valor\": 0.0\n        }\n    ]\n}\n```"
       },
       "response": []
     },
@@ -148,12 +152,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/front/item-formula/read/:nameItemFormula",
+          "raw": "{{baseUrl}}/api/v1/item-formula/read/:nameItemFormula",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
-            "front",
+            "api",
+            "v1",
             "item-formula",
             "read",
             ":nameItemFormula"
@@ -166,7 +171,7 @@
             }
           ]
         },
-        "description": "Busca um item de fórmula pelo nome."
+        "description": "Busca um item de fórmula pelo nome.\n\n**Resposta (encontrado):**\n```json\n{\n    \"resultado\": \"Item de fórmula encontrado com sucesso\",\n    \"itemFormula\": {\n        \"nomeItem\": \"Tinta Azul 0.7mm\",\n        \"idFormula\": \"CAN-CLASSIC-001\",\n        \"nomeFormula\": \"Caneta Azul Classic\",\n        \"quantidade\": 1,\n        \"valor\": 0.25\n    }\n}\n```\n\n**Resposta (não encontrado):**\n```json\n{\n    \"resultado\": \"Item de fórmula não encontrado\",\n    \"itemFormula\": null\n}\n```"
       },
       "response": []
     },
@@ -190,12 +195,13 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/front/item-formula/update/:nameItemFormula",
+          "raw": "{{baseUrl}}/api/v1/item-formula/update/:nameItemFormula",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
-            "front",
+            "api",
+            "v1",
             "item-formula",
             "update",
             ":nameItemFormula"
@@ -208,7 +214,7 @@
             }
           ]
         },
-        "description": "Atualiza um item de fórmula existente."
+        "description": "Atualiza um item de fórmula existente.\n\n**Resposta (atualizado):**\n```json\n{\n    \"resultado\": \"Item de fórmula atualizado com sucesso\",\n    \"itemFormula\": {\n        \"nomeItem\": \"Tinta Azul 1.0mm\",\n        \"idFormula\": \"CAN-CLASSIC-001\",\n        \"nomeFormula\": \"Caneta Azul Classic\",\n        \"quantidade\": 1,\n        \"valor\": 0.30\n    }\n}\n```\n\n**Resposta (não encontrado):**\n```json\n{\n    \"resultado\": \"Item de fórmula não encontrado para atualização\",\n    \"itemFormula\": null\n}\n```"
       },
       "response": []
     },
@@ -218,12 +224,13 @@
         "method": "DELETE",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/front/item-formula/delete/:nameItemFormula",
+          "raw": "{{baseUrl}}/api/v1/item-formula/delete/:nameItemFormula",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
-            "front",
+            "api",
+            "v1",
             "item-formula",
             "delete",
             ":nameItemFormula"
@@ -236,7 +243,36 @@
             }
           ]
         },
-        "description": "Deleta um item de fórmula pelo nome."
+        "description": "Deleta um item de fórmula pelo nome.\n\n**Resposta:**\n```json\n{\n    \"resultado\": \"Item de fórmula deletado com sucesso\",\n    \"nomeItemFormula\": \"Tinta Azul 1.0mm\"\n}\n```"
+      },
+      "response": []
+    },
+    {
+      "name": "Read Formula Tree",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/v1/formula-tree/read/:idFormula",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "formula-tree",
+            "read",
+            ":idFormula"
+          ],
+          "variable": [
+            {
+              "key": "idFormula",
+              "value": "COMP-001",
+              "description": "O ID da fórmula para construir a árvore"
+            }
+          ]
+        },
+        "description": "Lê todos os itens de uma fórmula e retorna a estrutura de árvore.\n\n**Resposta:**\n```json\n{\n    \"resultado\": \"Árvore de fórmula lida com sucesso\",\n    \"treeNode\": {\n        \"nomeItem\": \"Computador\",\n        \"quantidade\": 1,\n        \"valor\": 0.0,\n        \"children\": [\n            {\n                \"nomeItem\": \"Gabinete\",\n                \"quantidade\": 1,\n                \"valor\": 900.0,\n                \"children\": [...]\n            }\n        ]\n    }\n}\n```"
       },
       "response": []
     }
