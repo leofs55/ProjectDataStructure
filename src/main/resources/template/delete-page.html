@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Excluir Item</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background-color: #f9f9f9; }
+    .container { max-width: 500px; margin: auto; background-color: #fff; padding: 20px; border: 1px solid #ddd; border-radius: 5px; }
+    .form-section { margin-bottom: 20px; }
+    h1, h2 { color: #333; margin-top: 0; }
+    label { display: block; margin-bottom: 5px; font-weight: bold; }
+    input[type="text"], input[type="number"] { width: 95%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; }
+    button { padding: 10px 15px; cursor: pointer; background-color: #dc3545; color: white; border: none; }
+    .link-principal { display: block; margin-top: 20px; color: #007bff; text-decoration: none; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>Excluir Item</h2>
+  <form th:action="@{/web/excluir}" th:object="${itemExcluir}" method="post">
+    <input type="hidden" th:if="${_csrf}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+    <label>Nome do Item a ser excluído:</label>
+    <input type="text" th:field="*{nomeItem}" required />
+    <button type="submit" onclick="return confirm('Tem certeza?');">Excluir</button>
+  </form>
+
+  <a href="/web/principal" class="link-principal">Voltar à Página Principal</a>
+</div>
+</body>
+</html>

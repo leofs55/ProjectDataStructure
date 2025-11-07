@@ -6,67 +6,85 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
 @Controller
 @AllArgsConstructor
+@RequestMapping("/web")
 public class DataStructureWebController {
-    private ItemFormulaService ItemFormulaService;
 
-    @GetMapping("/formula/{idFormula}")
-    public String verPaginaFormula(@PathVariable String idFormula, Model model){
-        List<ItemFormula> itens = ItemFormulaService.readAllFormulaItens(idFormula);
+    private ItemFormulaService itemFormulaService;
 
-        ItemFormula itemForm = new ItemFormula();
-        itemForm.setIdFormula(idFormula);
-
-        model.addAttribute("itensFormula", itens);
-        model.addAttribute("idFormula", idFormula);
-        model.addAttribute("novoItem", itemForm);
-
-        return "pagina-formula";
-    }
-}
-
-@PostMapping("/item/adicionar")
-public String adicionarItem(@ModelAttribute ItemFormula novoItem){
-    ItemFormulaService.createFormulaItem(novoItem);
-    return "redirect:/formula/" + novoItem.getIdFormula();
-}
-
-@GetMapping("/item/editar/{nomeItem}")
-public String verPaginaEditar(@PathVariable String nomeItem, Model model){
-    ItemFormula item = ItemFormulaService.readFormulaItem(nomeItem);
-    if (item == null){
-        return "redirect:/";
-    }
-    model.addAttribute("itemParaEditar", item);
-    return "pagina-editar";
-}
-
-@PostMapping("/item/atualizar/{nomeItemOriginal}")
-public String atualizarItem(@PathVariable String nomeItemOriginal, @ModelAttribute ItemFormula itemAtualizado){
-    ItemFormula itemSalvo = ItemFormulaService.updateFormulaItem(nomeItemOriginal, itemAtualizado);
-
-    if(itemSalvo != null){
-        return "redirect:/formula/" + nomeItemOriginal;
-    }
-    return "redirect:/item/editar/";
-}
-
-@GetMapping("/item/deletar/{nomeItem}")
-public String deletarItem(@PathVariable String nomeItem){
-    ItemFormula item = itemFormulaService.readFormulaItem(nomeItem);
-    String idFormula = item != null ? item.getIdFormula() : null;
-
-    itemFormulaService.deleteFormulaItem(nomeItem);
-
-    if(idFormula != null){
-        return "redirect:/formula/" + idFormula;
+    @GetMapping("/principal")
+    public String mostrarPaginaPrincipal(Model model) {
+        if (!model.containsAttribute("itemAdicionar")) {
+            model.addAttribute("itemAdicionar", new ItemFormula());
+        }
+        return "pagina-principal";
     }
 
-    return "redirect:/";
+    @PostMapping("/adicionar")
+    public String adicionarItem(@ModelAttribute ItemFormula item, RedirectAttributes redirectAttributes) {
+        try {
+            itemFormulaService.createFormulaItem(item);
+            redirectAttributes.addFlashAttribute("mensagemSucesso", "Item '" + item.getNomeItem() + "' adicionado com sucesso!");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("mensagemErro", "Erro ao adicionar item: " + e.getMessage());
+        }
+        return "redirect:/web/principal";
+    }
+
+    @GetMapping("/alterar")
+    public String mostrarPaginaAlterar(Model model) {
+        model.addAttribute("itemAlterar", new ItemFormula());
+        return "pagina-alterar";
+    }
+
+    @PostMapping("/alterar")
+    public String alterarItem(@ModelAttribute ItemFormula item, RedirectAttributes redirectAttributes) {
+        String nomeItemChave = item.getNomeItem();
+        try {
+            ItemFormula itemSalvo = itemFormulaService.updateFormulaItem(nomeItemChave, item);
+            if (itemSalvo == null) {
+                redirectAttributes.addFlashAttribute("mensagemErro", "Item '" + nomeItemChave + "' não encontrado.");
+            } else {
+                redirectAttributes.addFlashAttribute("mensagemSucesso", "Item '" + nomeItemChave + "' atualizado com sucesso!");
+            }
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("mensagemErro", "Erro ao atualizar item: " + e.getMessage());
+        }
+        return "redirect:/web/principal";
+    }
+
+    @GetMapping("/excluir")
+    public String mostrarPaginaExcluir(Model model) {
+        model.addAttribute("itemExcluir", new ItemFormula());
+        return "pagina-excluir";
+    }
+
+    @PostMapping("/excluir")
+    public String excluirItem(@ModelAttribute ItemFormula item, RedirectAttributes redirectAttributes) {
+        try {
+            itemFormulaService.deleteFormulaItem(item.getNomeItem());
+            redirectAttributes.addFlashAttribute("mensagemSucesso", "Item '" + item.getNomeItem() + "' excluído com sucesso!");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("mensagemErro", "Erro ao excluir item: " + e.getMessage());
+        }
+        return "redirect:/web/principal";
+    }
+
+    @GetMapping("/buscar")
+    public String mostrarPaginaBuscar() {
+        return "pagina-buscar";
+    }
+
+    @GetMapping("/resultados")
+    public String mostrarPaginaResultados(@RequestParam String idFormula, Model model) {
+        List<ItemFormula> itens = itemFormulaService.readAllFormulaItens(idFormula);
+        model.addAttribute("itens", itens);
+        model.addAttribute("idFormulaBuscada", idFormula);
+        return "pagina-resultados";
+    }
 }
-
-

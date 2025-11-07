@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Resultados da Busca</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background-color: #f9f9f9; }
+    .container { max-width: 500px; margin: auto; background-color: #fff; padding: 20px; border: 1px solid #ddd; border-radius: 5px; }
+    h1, h2 { color: #333; margin-top: 0; }
+    .link-principal { display: block; margin-top: 20px; color: #007bff; text-decoration: none; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ddd; padding: 8px; }
+    th { background-color: #f2f2f2; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2 th:text="'Resultados para ID: ' + ${idFormulaBuscada}">Resultados</h2>
+
+  <table>
+    <thead>
+    <tr>
+      <th>Nome Item</th>
+      <th>Nome Fórmula</th>
+      <th>Qtd.</th>
+      <th>Valor</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${#lists.isEmpty(itens)}">
+      <td colspan="4" style="text-align: center;">Nenhum item encontrado.</td>
+    </tr>
+    <tr th:each="item : ${itens}">
+      <td th:text="${item.nomeItem}"></td>
+      <td th:text="${item.nomeFormula}"></td>
+      <td th:text="${item.quantidade}"></td>
+      <td th:text="${#numbers.formatCurrency(item.valor)}"></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <a href="/web/principal" class="link-principal">Voltar à Página Principal</a>
+</div>
+</body>
+</html>
